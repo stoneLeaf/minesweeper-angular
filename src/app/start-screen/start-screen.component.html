@@ -8,21 +8,25 @@
   <h2>Set your options and get started.</h2>
   <div class="setting">
     <label>Board size</label>
-    <button class="option" (click)="selectSize(BoardSize.Small)"
-            [class.selected]="size == BoardSize.Small">Small</button>
-    <button class="option" (click)="selectSize(BoardSize.Medium)"
-            [class.selected]="size == BoardSize.Medium">Medium</button>
-    <button class="option" (click)="selectSize(BoardSize.Large)"
-            [class.selected]="size == BoardSize.Large">Large</button>
+    <ul>
+      <li *ngFor="let size of boardSizes">
+        <button class="option" (click)="this.gameService.setBoardSize(size)"
+                [class.selected]="this.gameService.boardSize == size">
+          {{size.name}}
+        </button>
+      </li>
+    </ul>
   </div>
   <div class="setting">
     <label>Difficulty</label>
-    <button class="option" (click)="selectDifficulty(DifficultyLevel.Beginner)"
-            [class.selected]="difficulty == DifficultyLevel.Beginner">Beginner</button>
-    <button class="option" (click)="selectDifficulty(DifficultyLevel.Intermediate)"
-            [class.selected]="difficulty == DifficultyLevel.Intermediate">Intermediate</button>
-    <button class="option" (click)="selectDifficulty(DifficultyLevel.Expert)"
-            [class.selected]="difficulty == DifficultyLevel.Expert">Expert</button>
+    <ul>
+      <li *ngFor="let level of difficultyLevels">
+        <button class="option" (click)="this.gameService.setDifficultyLevel(level)"
+                [class.selected]="this.gameService.difficultyLevel == level">
+          {{level.name}}
+        </button>
+      </li>
+    </ul>
   </div>
   <button class="button start" (click)="startGame()">Start</button>
 </div>
