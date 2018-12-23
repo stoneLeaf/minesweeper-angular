@@ -1,6 +1,9 @@
 {
   "name": "minesweeper-angular",
-  "version": "0.0.0",
+  "version": "0.1.0",
+  "license": "MIT",
+  "author": "stoneLeaf",
+  "repository": "https://github.com/stoneLeaf/minesweeper-angular",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
