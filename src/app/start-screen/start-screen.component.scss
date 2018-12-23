@@ -1,0 +1,44 @@
+
+.setting {
+  margin: 1em;
+  display: flex;
+  align-items: center;
+  label {
+    float: left;
+    width: 5em;
+    margin-right: 1.5em;
+    color: brown;
+    font-size: 1.3em;
+  }
+}
+
+.option {
+  position: relative;
+  border: 0;
+  color: white;
+  margin: 0.1em;
+  padding: 0.7em 1.5em;
+  border-radius: 4px;
+  background-color: #78604E;
+  font-family: 'Courier New', Courier, monospace;
+  &:hover {
+    background-color: #47392f;
+  }
+}
+
+.selected {
+  background-color: #201A15;
+  font-weight: bold;
+  &:hover {
+    background-color: #201A15;
+  }
+}
+
+.dialog {
+  border: 1px dotted black;
+  padding: 0.5em 2em;
+}
+
+.start {
+  float: right;
+}
