@@ -1,5 +1,5 @@
 /**
- * Class used to represent a difficulty level.
+ * Class representing a difficulty level.
  */
 export class DifficultyLevel {
   static Beginner = new DifficultyLevel('Beginner', 15);
@@ -7,10 +7,13 @@ export class DifficultyLevel {
   static Expert = new DifficultyLevel('Expert', 4);
 
   static getLevels(): DifficultyLevel[] {
-    // TODO: do it dynamically
-    return [DifficultyLevel.Beginner,
-            DifficultyLevel.Intermediate,
-            DifficultyLevel.Expert];
+    const levels = [];
+    for (const property of Object.keys(DifficultyLevel)) {
+      if (DifficultyLevel[property] instanceof DifficultyLevel) {
+        levels.push(DifficultyLevel[property]);
+      }
+    }
+    return levels;
   }
 
   private constructor(private name: string,

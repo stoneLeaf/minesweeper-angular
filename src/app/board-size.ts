@@ -1,5 +1,5 @@
 /**
- * Class used to represent a board size.
+ * Class representing a board size.
  */
 export class BoardSize {
   static Small = new BoardSize('Small', 8, 8);
@@ -7,8 +7,13 @@ export class BoardSize {
   static Large = new BoardSize('Large', 32, 32);
 
   static getSizes(): BoardSize[] {
-    // TODO: make it dynamic
-    return [BoardSize.Small, BoardSize.Medium, BoardSize.Large];
+    const sizes = [];
+    for (const property of Object.keys(BoardSize)) {
+      if (BoardSize[property] instanceof BoardSize) {
+        sizes.push(BoardSize[property]);
+      }
+    }
+    return sizes;
   }
 
   private constructor(private name: string,
