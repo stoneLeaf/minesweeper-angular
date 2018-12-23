@@ -1,0 +1,24 @@
+@import "variables.scss";
+
+div {
+  margin-top: 1.2em;
+  text-align: center;
+  color: rgb(95, 95, 95);
+}
+
+a {
+  color: $primary-color;
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+hr {
+  width: 60%;
+  margin-left: auto;
+  margin-right: auto;
+  height: 1px;
+  border: 0;
+  background-color: $light-color;
+}
