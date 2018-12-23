@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { GameService } from '../game.service';
-import { BoardSize } from '../board-size';
+import { FieldSize } from '../field-size';
 import { DifficultyLevel } from '../difficulty-level';
 
 @Component({
@@ -10,7 +11,7 @@ import { DifficultyLevel } from '../difficulty-level';
   styleUrls: ['./start-screen.component.scss']
 })
 export class StartScreenComponent implements OnInit {
-  boardSizes = BoardSize.getSizes();
+  fieldSizes = FieldSize.getSizes();
   difficultyLevels = DifficultyLevel.getLevels();
 
   constructor(private gameService: GameService) { }

@@ -1,23 +1,23 @@
 import { Injectable } from '@angular/core';
 
-import { BoardSize } from './board-size';
+import { FieldSize } from './field-size';
 import { DifficultyLevel } from './difficulty-level';
 
 @Injectable({
   providedIn: 'root'
 })
 export class GameService {
-  boardSize: BoardSize;
+  fieldSize: FieldSize;
   difficultyLevel: DifficultyLevel;
 
   constructor() {
     // Setting default values
-    this.boardSize = BoardSize.Medium;
+    this.fieldSize = FieldSize.Medium;
     this.difficultyLevel = DifficultyLevel.Beginner;
   }
 
-  setBoardSize(boardSize: BoardSize) {
-    this.boardSize = boardSize;
+  setFieldSize(fieldSize: FieldSize) {
+    this.fieldSize = fieldSize;
   }
 
   setDifficultyLevel(difficultyLevel: DifficultyLevel) {

@@ -7,11 +7,11 @@
 <div class="dialog">
   <h2>Set your options and get started.</h2>
   <div class="setting">
-    <label>Board size</label>
+    <label>Field size</label>
     <ul>
-      <li *ngFor="let size of boardSizes">
-        <button class="option" (click)="this.gameService.setBoardSize(size)"
-                [class.selected]="this.gameService.boardSize == size">
+      <li *ngFor="let size of fieldSizes">
+        <button class="option" (click)="this.gameService.setFieldSize(size)"
+                [class.selected]="this.gameService.fieldSize == size">
           {{size.name}}
         </button>
       </li>
