@@ -1,3 +1,4 @@
+@import "variables.scss";
 
  ul {
   list-style-type: none;
@@ -17,7 +18,7 @@ li {
     float: left;
     width: 7em;
     margin-right: 1.5em;
-    color: brown;
+    color: $primary-color;
     font-size: 1.3em;
   }
 }
@@ -29,18 +30,18 @@ li {
   margin: 0.1em;
   padding: 0.7em 1.5em;
   border-radius: 4px;
-  background-color: #78604E;
+  background-color: $light-color;
   font-family: 'Courier New', Courier, monospace;
   &:hover {
-    background-color: #47392f;
+    background-color: $light-color-faded;
   }
 }
 
 .selected {
-  background-color: #201A15;
+  background-color: $dark-color;
   font-weight: bold;
   &:hover {
-    background-color: #201A15;
+    background-color: $dark-color;
   }
 }
 
