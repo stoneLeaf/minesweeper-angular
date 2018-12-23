@@ -9,3 +9,7 @@ This project requires [Node.js](https://nodejs.org/), [npm](https://www.npmjs.co
 - clone the repository
 - `npm install` to set up the required dependencies
 - `ng serve` to run a dev server
+
+## License
+
+This project is under the [MIT license](LICENSE).
