@@ -1,0 +1,5 @@
+<div class="field">
+  <div class="row" *ngFor="let y of heightArray()">
+    <app-game-tile *ngFor="let x of widthArray()" [yPos]=y [xPos]="x"></app-game-tile>
+  </div>
+</div>

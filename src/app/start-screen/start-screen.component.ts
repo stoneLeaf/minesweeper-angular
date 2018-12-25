@@ -14,8 +14,14 @@ export class StartScreenComponent implements OnInit {
   fieldSizes = FieldSize.getSizes();
   difficultyLevels = DifficultyLevel.getLevels();
 
-  constructor(private gameService: GameService) { }
+  constructor(private gameService: GameService,
+              private router: Router) { }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.gameService.startScreenViewed = true;
+  }
 
+  startGame() {
+    this.router.navigate(['field']);
+  }
 }

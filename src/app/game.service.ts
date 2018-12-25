@@ -9,6 +9,7 @@ import { DifficultyLevel } from './difficulty-level';
 export class GameService {
   fieldSize: FieldSize;
   difficultyLevel: DifficultyLevel;
+  startScreenViewed = false;
 
   constructor() {
     // Setting default values
