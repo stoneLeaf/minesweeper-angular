@@ -10,8 +10,7 @@ export class GameFieldComponent implements OnInit {
 
   constructor(private gameService: GameService) { }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
   private coordinatesArray(length: number): number[] {
     return Array.from(Array(length).keys());

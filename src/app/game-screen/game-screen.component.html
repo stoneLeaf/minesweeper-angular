@@ -1,2 +1,4 @@
-<app-game-top-bar></app-game-top-bar>
-<app-game-field></app-game-field>
+<div *ngIf="this.gameService.ready">
+  <app-game-top-bar></app-game-top-bar>
+  <app-game-field></app-game-field>
+</div>
