@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
+
 import { Tile } from '../tile';
 import { GameService } from '../game.service';
-import { flatten } from '@angular/core/src/render3/util';
 
 @Component({
   selector: 'app-game-tile',
@@ -21,7 +21,7 @@ export class GameTileComponent implements OnInit {
   }
 
   onRightClick() {
-    this.gameService.flag(this.tile);
+    this.gameService.toggle(this.tile);
     return false;
   }
 }

@@ -16,6 +16,7 @@ export class GameService {
 
   private field: Tile[][] = [];
   private mineTiles: Tile[] = [];
+  private leftToUncover: number;
 
   constructor() {
     // Setting default values
@@ -42,13 +43,14 @@ export class GameService {
     }
     // Placing mines
     const totalTiles = this.fieldSize.getHeight() * this.fieldSize.getWidth();
-    let minePlacings =  totalTiles * (this.difficultyLevel.getMineRatio() / 100);
+    let minePlacings =  Math.round(totalTiles * (this.difficultyLevel.getMineRatio() / 100));
+    this.leftToUncover = totalTiles - minePlacings;
     for (let i = 0; i < minePlacings; i++) {
       const xRand = this.randomInt(this.fieldSize.getWidth() - 1);
       const yRand = this.randomInt(this.fieldSize.getHeight() - 1);
       const tile = this.getTile(xRand, yRand);
       if (tile.mined) {
-        // Already mined, adding a placing operation
+        // Already mined, adding a new try
         minePlacings++;
       } else {
         tile.mined = true;
@@ -71,7 +73,7 @@ export class GameService {
     if (this.over) { return; }
     if (tile.uncovered) { return; }
     if (tile.flagged) {
-      alert('Remove flag before uncovering.');
+      alert('Cannot uncover flagged tile.');
       return;
     }
 
@@ -94,6 +96,7 @@ export class GameService {
       return;
     }
     tile.uncovered = true;
+    this.leftToUncover--;
     let number = 0;
     const aroundTiles = [];
     for (let dX = -1; dX < 2; dX++) {
@@ -116,17 +119,31 @@ export class GameService {
     } else {
       tile.text = number.toString();
     }
+
+    if (this.leftToUncover === 0) {
+      this.mineTiles.map(t => this.flag(t));
+      this.over = true;
+      alert('You won!');
+    }
   }
 
-  flag(tile: Tile) {
+  toggle(tile: Tile) {
     if (this.over) { return; }
     if (tile.uncovered) { return; }
     if (tile.flagged) {
-      tile.flagged = false;
-      tile.text = '';
+      this.unflag(tile);
     } else {
-      tile.flagged = true;
-      tile.text = '⚑';
+      this.flag(tile);
     }
+  }
+
+  private flag(tile: Tile) {
+    tile.flagged = true;
+    tile.text = '⚑';
+  }
+
+  private unflag(tile: Tile) {
+    tile.flagged = false;
+    tile.text = '';
   }
 }
