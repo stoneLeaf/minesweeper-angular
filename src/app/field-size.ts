@@ -2,9 +2,9 @@
  * Class representing a field size.
  */
 export class FieldSize {
-  static Small = new FieldSize('Small', 8, 8);
+  static Small = new FieldSize('Small', 9, 9);
   static Medium = new FieldSize('Medium', 16, 16);
-  static Large = new FieldSize('Large', 32, 32);
+  static Large = new FieldSize('Large', 16, 30);
 
   static getSizes(): FieldSize[] {
     const sizes = [];

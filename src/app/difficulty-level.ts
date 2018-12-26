@@ -2,9 +2,9 @@
  * Class representing a difficulty level.
  */
 export class DifficultyLevel {
-  static Beginner = new DifficultyLevel('Beginner', 15);
-  static Intermediate = new DifficultyLevel('Intermediate', 25);
-  static Expert = new DifficultyLevel('Expert', 35);
+  static Beginner = new DifficultyLevel('Beginner', 12);
+  static Intermediate = new DifficultyLevel('Intermediate', 15);
+  static Expert = new DifficultyLevel('Expert', 20);
 
   static getLevels(): DifficultyLevel[] {
     const levels = [];
