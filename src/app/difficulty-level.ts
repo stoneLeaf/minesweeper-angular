@@ -3,8 +3,8 @@
  */
 export class DifficultyLevel {
   static Beginner = new DifficultyLevel('Beginner', 15);
-  static Intermediate = new DifficultyLevel('Intermediate', 8);
-  static Expert = new DifficultyLevel('Expert', 4);
+  static Intermediate = new DifficultyLevel('Intermediate', 25);
+  static Expert = new DifficultyLevel('Expert', 35);
 
   static getLevels(): DifficultyLevel[] {
     const levels = [];
@@ -17,13 +17,13 @@ export class DifficultyLevel {
   }
 
   private constructor(private name: string,
-                      private mineFrequency: number) { }
+                      private mineRatio: number) { }
 
   getName(): string {
     return this.name;
   }
 
-  getMineFrequency(): number {
-    return this.mineFrequency;
+  getMineRatio(): number {
+    return this.mineRatio;
   }
 }
