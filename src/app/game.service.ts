@@ -13,6 +13,7 @@ export class GameService {
   startScreenViewed = false;
   ready = false;
   over = false;
+  remainingMines: number;
 
   private field: Tile[][] = [];
   private mineTiles: Tile[] = [];
@@ -45,6 +46,7 @@ export class GameService {
     const totalTiles = this.fieldSize.getHeight() * this.fieldSize.getWidth();
     let minePlacings =  Math.round(totalTiles * (this.difficultyLevel.getMineRatio() / 100));
     this.leftToUncover = totalTiles - minePlacings;
+    this.remainingMines = minePlacings;
     for (let i = 0; i < minePlacings; i++) {
       const xRand = this.randomInt(this.fieldSize.getWidth() - 1);
       const yRand = this.randomInt(this.fieldSize.getHeight() - 1);
@@ -123,6 +125,7 @@ export class GameService {
     if (this.leftToUncover === 0) {
       this.mineTiles.map(t => this.flag(t));
       this.over = true;
+      this.remainingMines = 0;
       alert('You won!');
     }
   }
@@ -131,8 +134,10 @@ export class GameService {
     if (this.over) { return; }
     if (tile.uncovered) { return; }
     if (tile.flagged) {
+      this.remainingMines++;
       this.unflag(tile);
     } else {
+      this.remainingMines--;
       this.flag(tile);
     }
   }
