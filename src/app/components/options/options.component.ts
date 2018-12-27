@@ -1,16 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { GameService } from '../game.service';
-import { FieldSize } from '../field-size';
-import { DifficultyLevel } from '../difficulty-level';
+import { GameService } from '../../services/game.service';
+import { FieldSize } from '../../models/field-size.model';
+import { DifficultyLevel } from '../../models/difficulty-level.model';
 
 @Component({
-  selector: 'app-start-screen',
-  templateUrl: './start-screen.component.html',
-  styleUrls: ['./start-screen.component.scss']
+  selector: 'app-options',
+  templateUrl: './options.component.html',
+  styleUrls: ['./options.component.scss']
 })
-export class StartScreenComponent implements OnInit {
+export class OptionsComponent implements OnInit {
   fieldSizes = FieldSize.getSizes();
   difficultyLevels = DifficultyLevel.getLevels();
 

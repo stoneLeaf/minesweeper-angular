@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { StartScreenComponent } from './start-screen/start-screen.component';
-import { GameScreenComponent } from './game-screen/game-screen.component';
+import { MainComponent } from './components/main/main.component';
+import { AboutComponent } from './components/about/about.component';
 
 const routes: Routes = [
-  { path: '', component: StartScreenComponent},
-  { path: 'field', component: GameScreenComponent},
+  { path: '', component: MainComponent},
+  { path: 'about', component: AboutComponent},
 ];
 
 @NgModule({

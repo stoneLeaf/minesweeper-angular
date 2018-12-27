@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 
-import { FieldSize } from './field-size';
-import { DifficultyLevel } from './difficulty-level';
-import { Tile } from './tile';
+import { FieldSize } from '../models/field-size.model';
+import { DifficultyLevel } from '../models/difficulty-level.model';
+import { Tile } from '../models/tile.model';
 
 @Injectable({
   providedIn: 'root'

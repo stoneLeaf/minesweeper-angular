@@ -3,22 +3,28 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { StartScreenComponent } from './start-screen/start-screen.component';
-import { GameScreenComponent } from './game-screen/game-screen.component';
-import { GameTopBarComponent } from './game-top-bar/game-top-bar.component';
-import { GameFieldComponent } from './game-field/game-field.component';
-import { GameTileComponent } from './game-tile/game-tile.component';
-import { GlobalFooterComponent } from './global-footer/global-footer.component';
+import { AboutComponent } from './components/about/about.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { GameComponent } from './components/game/game.component';
+import { GameFieldComponent } from './components/game-field/game-field.component';
+import { GameTileComponent } from './components/game-tile/game-tile.component';
+import { GameTopBarComponent } from './components/game-top-bar/game-top-bar.component';
+import { MainComponent } from './components/main/main.component';
+import { OptionsComponent } from './components/options/options.component';
+import { TopBarComponent } from './components/top-bar/top-bar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    StartScreenComponent,
-    GameScreenComponent,
-    GameTopBarComponent,
+    AboutComponent,
+    FooterComponent,
+    GameComponent,
     GameFieldComponent,
     GameTileComponent,
-    GlobalFooterComponent
+    GameTopBarComponent,
+    MainComponent,
+    OptionsComponent,
+    TopBarComponent
   ],
   imports: [
     BrowserModule,
