@@ -17,6 +17,6 @@ export class GameScreenComponent implements OnInit {
     if (!this.gameService.startScreenViewed) {
       return this.router.navigate(['']);
     }
-    this.gameService.generateField();
+    this.gameService.reset();
   }
 }

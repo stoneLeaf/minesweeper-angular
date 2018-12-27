@@ -12,8 +12,12 @@ export class GameService {
   difficultyLevel: DifficultyLevel;
   startScreenViewed = false;
   ready = false;
+  started = false;
   over = false;
   remainingMines: number;
+  startDate: Date;
+  timerInterval;
+  timerText = '00:00';
 
   private field: Tile[][] = [];
   private mineTiles: Tile[] = [];
@@ -71,7 +75,43 @@ export class GameService {
     return this.field[yPos][xPos];
   }
 
+  start() {
+    this.started = true;
+    this.startDate = new Date();
+    this.timerInterval = setInterval(() => {
+      const delta = Math.floor(
+                    ((new Date()).getTime() - this.startDate.getTime()) / 1000);
+      this.timerText = this.timerForDisplay(delta);
+    }, 1000);
+  }
+
+  private timerForDisplay(totalSeconds: number): string {
+    let minutes: any = Math.floor(totalSeconds / 60);
+    if (minutes < 10) {
+      minutes = '0' + minutes;
+    }
+    let seconds: any = Math.floor(totalSeconds % 60);
+    if (seconds < 10) {
+      seconds = '0' + seconds;
+    }
+    return `${minutes}:${seconds}`;
+  }
+
+  stop() {
+    this.over = true;
+    clearInterval(this.timerInterval);
+  }
+
+  reset() {
+    this.stop();
+    this.over = false;
+    this.started = false;
+    this.timerText = '00:00';
+    this.generateField();
+  }
+
   uncover(tile: Tile) {
+    if (!this.started) { this.start(); }
     if (this.over) { return; }
     if (tile.uncovered) { return; }
     if (tile.flagged) {
@@ -81,7 +121,7 @@ export class GameService {
 
     if (tile.mined) {
       this.mineTiles.map(t => this.uncoverMine(t));
-      this.over = true;
+      this.stop();
       return;
     }
 
@@ -124,9 +164,9 @@ export class GameService {
 
     if (this.leftToUncover === 0) {
       this.mineTiles.map(t => this.flag(t));
-      this.over = true;
       this.remainingMines = 0;
-      alert('You won!');
+      alert(`You won in ${this.timerText}!`);
+      this.stop();
     }
   }
 
