@@ -114,10 +114,7 @@ export class GameService {
     if (!this.started) { this.start(); }
     if (this.over) { return; }
     if (tile.uncovered) { return; }
-    if (tile.flagged) {
-      alert('Cannot uncover flagged tile.');
-      return;
-    }
+    if (tile.flagged) { return; }
 
     if (tile.mined) {
       this.mineTiles.map(t => this.uncoverMine(t));
