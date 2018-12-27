@@ -46,36 +46,47 @@ export class GameService {
         this.field[y][x] = new Tile(x, y);
       }
     }
-    // Placing mines
     const totalTiles = this.fieldSize.getHeight() * this.fieldSize.getWidth();
-    let minePlacings =  Math.round(totalTiles * (this.difficultyLevel.getMineRatio() / 100));
-    this.leftToUncover = totalTiles - minePlacings;
-    this.remainingMines = minePlacings;
+    this.remainingMines =  Math.round(totalTiles * (this.difficultyLevel.getMineRatio() / 100));
+    this.leftToUncover = totalTiles - this.remainingMines;
+    this.ready = true;
+  }
+
+  placeMinesAwayFrom(tile: Tile) {
+    let minePlacings = this.remainingMines;
     for (let i = 0; i < minePlacings; i++) {
       const xRand = this.randomInt(this.fieldSize.getWidth() - 1);
       const yRand = this.randomInt(this.fieldSize.getHeight() - 1);
-      const tile = this.getTile(xRand, yRand);
-      if (tile.mined) {
-        // Already mined, adding a new try
+      const randTile = this.getTile(xRand, yRand);
+      if (randTile.mined || this.areNear(randTile, tile)) {
+        // Adding a new try
         minePlacings++;
       } else {
-        tile.mined = true;
-        this.mineTiles.push(tile);
+        randTile.mined = true;
+        this.mineTiles.push(randTile);
       }
     }
-    this.ready = true;
-    this.over = false;
   }
 
   private randomInt(max: number): number {
     return Math.round(Math.random() * max);
   }
 
+  private areNear(tileA: Tile, tileB: Tile): boolean {
+    const deltaX = tileA.xPos - tileB.xPos;
+    const deltaY = tileA.yPos - tileB.yPos;
+    if (((deltaX === 0 || Math.abs(deltaX) === 1)) &&
+         (deltaY === 0 || Math.abs(deltaY) === 1)) {
+      return true;
+    }
+    return false;
+  }
+
   getTile(xPos: number, yPos: number): Tile {
     return this.field[yPos][xPos];
   }
 
-  start() {
+  start(tile: Tile) {
     this.started = true;
     this.startDate = new Date();
     this.timerInterval = setInterval(() => {
@@ -83,6 +94,7 @@ export class GameService {
                     ((new Date()).getTime() - this.startDate.getTime()) / 1000);
       this.timerText = this.timerForDisplay(delta);
     }, 1000);
+    this.placeMinesAwayFrom(tile);
   }
 
   private timerForDisplay(totalSeconds: number): string {
@@ -111,7 +123,7 @@ export class GameService {
   }
 
   uncover(tile: Tile) {
-    if (!this.started) { this.start(); }
+    if (!this.started) { this.start(tile); }
     if (this.over) { return; }
     if (tile.uncovered) { return; }
     if (tile.flagged) { return; }
