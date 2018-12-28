@@ -12,4 +12,8 @@ export class GameTopBarComponent implements OnInit {
   constructor(private gameService: GameService) { }
 
   ngOnInit() { }
+
+  newGame() {
+    this.gameService.newGame();
+  }
 }

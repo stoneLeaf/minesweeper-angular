@@ -1,0 +1,17 @@
+<div class="nav-bar">
+  <div class="nav-title">
+    <a routerLink="/"><img alt="Logo" src="/assets/images/logo.svg"></a>
+    <a routerLink="/">minesweeper</a>
+  </div>
+  <div class="nav-items">
+    <div class="nav-item">
+      <button class="button" (click)="newGame()">New game</button>
+    </div>
+    <div class="nav-item">
+      <button class="button" (click)="showOptions()">Options</button>
+    </div>
+    <div class="nav-item">
+      <button class="button" routerLink="/about">About</button>
+    </div>
+  </div>
+</div>

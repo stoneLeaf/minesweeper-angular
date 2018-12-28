@@ -1,0 +1,34 @@
+@import 'variables.scss';
+
+.nav-bar {
+  background-color: $dark-color;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1em;
+}
+
+.nav-title {
+  display: flex;
+  align-items: center;
+  img {
+    height: 2.5em;
+    margin: 0.7em 0.8em 0.4em 0.5em;
+  }
+  a {
+    text-decoration: none;
+    color: white;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+}
+
+.nav-items {
+  display: flex;
+  align-items: center;
+}
+
+.nav-item {
+  margin-left: 1em;
+}

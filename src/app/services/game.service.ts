@@ -114,7 +114,7 @@ export class GameService {
     clearInterval(this.timerInterval);
   }
 
-  reset() {
+  newGame() {
     this.stop();
     this.over = false;
     this.started = false;

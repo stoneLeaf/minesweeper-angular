@@ -3,19 +3,11 @@
 div {
   margin-top: 1.2em;
   text-align: center;
-  color: rgb(95, 95, 95);
-}
-
-a {
-  color: $primary-color;
-  text-decoration: none;
-  &:hover {
-    text-decoration: underline;
-  }
+  color: #959595;
 }
 
 hr {
   height: 1px;
   border: 0;
-  background-color: $light-color;
+  background-color: #959595;
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { GameService } from '../../services/game.service';
@@ -8,15 +8,16 @@ import { GameService } from '../../services/game.service';
   templateUrl: './game.component.html',
   styleUrls: ['./game.component.scss']
 })
-export class GameComponent implements OnInit {
+export class GameComponent implements OnInit, OnDestroy {
 
   constructor(private gameService: GameService,
               private router: Router) { }
 
   ngOnInit() {
-    if (!this.gameService.startScreenViewed) {
-      return this.router.navigate(['']);
-    }
-    this.gameService.reset();
+    this.gameService.newGame();
+  }
+
+  ngOnDestroy(): void {
+    console.log('game component destroyed');
   }
 }

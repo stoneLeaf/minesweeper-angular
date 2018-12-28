@@ -9,9 +9,8 @@ import { GameComponent } from './components/game/game.component';
 import { GameFieldComponent } from './components/game-field/game-field.component';
 import { GameTileComponent } from './components/game-tile/game-tile.component';
 import { GameTopBarComponent } from './components/game-top-bar/game-top-bar.component';
-import { MainComponent } from './components/main/main.component';
+import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { OptionsComponent } from './components/options/options.component';
-import { TopBarComponent } from './components/top-bar/top-bar.component';
 
 @NgModule({
   declarations: [
@@ -22,9 +21,8 @@ import { TopBarComponent } from './components/top-bar/top-bar.component';
     GameFieldComponent,
     GameTileComponent,
     GameTopBarComponent,
-    MainComponent,
-    OptionsComponent,
-    TopBarComponent
+    NavBarComponent,
+    OptionsComponent
   ],
   imports: [
     BrowserModule,

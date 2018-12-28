@@ -17,11 +17,10 @@ export class OptionsComponent implements OnInit {
   constructor(private gameService: GameService,
               private router: Router) { }
 
-  ngOnInit() {
-    this.gameService.startScreenViewed = true;
-  }
+  ngOnInit() { }
 
   startGame() {
-    this.router.navigate(['field']);
+    this.gameService.newGame();
+    this.router.navigate(['']);
   }
 }

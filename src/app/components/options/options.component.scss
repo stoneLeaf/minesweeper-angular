@@ -10,16 +10,6 @@ li {
   display: inline;
 }
 
-.dialog {
-  border: 1px dotted black;
-  padding: 1.5em 1.5em;
-}
-
-.title {
-  margin-bottom: 1.7em;
-  font-size: 1.4em;
-}
-
 .setting {
   margin: 1em 0 0 0;
   display: flex;
@@ -52,10 +42,4 @@ li {
   &:hover {
     background-color: $dark-color;
   }
-}
-
-.action-bar {
-  margin: 1em 0 0 0;
-  display: flex;
-  justify-content: flex-end;
 }
