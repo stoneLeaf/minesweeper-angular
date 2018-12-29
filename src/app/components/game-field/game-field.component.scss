@@ -1,11 +1,7 @@
-.field-container {
-  margin: 0.5em;
-  display: flex;
-  justify-content: center;
-}
+@import 'game.scss';
 
 .field {
-  border: 1px solid grey;
+  @extend .debossed;
   display: inline-block;
 }
 

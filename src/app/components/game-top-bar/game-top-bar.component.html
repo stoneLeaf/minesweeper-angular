@@ -1,11 +1,9 @@
 <div class="bar">
-  <div class="count">
-    {{this.gameService.remainingMines}} remaining
+  <div class="info">
+    <div class="counter">{{this.numberForDisplay(this.gameService.remainingMines, 3)}}</div>
   </div>
-  <div class="smiley">
-    <img (click)="newGame()" height="50" alt="Logo" src="/assets/images/face_happy.svg">
-  </div>
-  <div class="clock">
-    {{this.gameService.timerText}}
+  <div class="smiley" (click)="newGame()"></div>
+  <div class="info">
+    <div class="counter">{{this.numberForDisplay(this.gameService.secondsElapsed, 3)}}</div>
   </div>
 </div>

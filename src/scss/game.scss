@@ -1,0 +1,28 @@
+/* Game specific styles */
+
+$border-width: 0.2em;
+$light-color: #FFFFFF;
+$shadow-color: #808080;
+$fill-color: #C0C0C0;
+
+.common-element-styles {
+  border-style: solid;
+  border-width: $border-width;
+  background-color: $fill-color;
+}
+
+.embossed {
+  @extend .common-element-styles;
+  border-top-color: $light-color;
+  border-left-color: $light-color;
+  border-bottom-color: $shadow-color;
+  border-right-color: $shadow-color
+}
+
+.debossed {
+  @extend .common-element-styles;
+  border-top-color: $shadow-color;
+  border-left-color: $shadow-color;
+  border-bottom-color: $light-color;
+  border-right-color: $light-color;
+}

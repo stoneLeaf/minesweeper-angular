@@ -15,9 +15,10 @@ export class GameService {
   started = false;
   over = false;
   remainingMines: number;
+
   startDate: Date;
   timerInterval;
-  timerText = '00:00';
+  secondsElapsed = 0;
 
   private field: Tile[][] = [];
   private mineTiles: Tile[] = [];
@@ -92,21 +93,9 @@ export class GameService {
     this.timerInterval = setInterval(() => {
       const delta = Math.floor(
                     ((new Date()).getTime() - this.startDate.getTime()) / 1000);
-      this.timerText = this.timerForDisplay(delta);
+      this.secondsElapsed = delta;
     }, 1000);
     this.placeMinesAwayFrom(tile);
-  }
-
-  private timerForDisplay(totalSeconds: number): string {
-    let minutes: any = Math.floor(totalSeconds / 60);
-    if (minutes < 10) {
-      minutes = '0' + minutes;
-    }
-    let seconds: any = Math.floor(totalSeconds % 60);
-    if (seconds < 10) {
-      seconds = '0' + seconds;
-    }
-    return `${minutes}:${seconds}`;
   }
 
   stop() {
@@ -115,10 +104,11 @@ export class GameService {
   }
 
   newGame() {
+    // TODO: if already new, do nothing
     this.stop();
     this.over = false;
     this.started = false;
-    this.timerText = '00:00';
+    this.secondsElapsed = 0;
     this.generateField();
   }
 
@@ -174,7 +164,7 @@ export class GameService {
     if (this.leftToUncover === 0) {
       this.mineTiles.map(t => this.flag(t));
       this.remainingMines = 0;
-      alert(`You won in ${this.timerText}!`);
+      alert(`You won in ${this.secondsElapsed}!`);
       this.stop();
     }
   }

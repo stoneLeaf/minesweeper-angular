@@ -1,0 +1,16 @@
+@import 'game.scss';
+
+.game-container {
+  margin-top: 1.2em;
+  display: flex;
+  justify-content: center;
+}
+
+.game {
+  @extend .embossed;
+  padding: 0.5em;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+}
