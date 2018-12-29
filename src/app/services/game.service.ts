@@ -10,10 +10,11 @@ import { Tile } from '../models/tile.model';
 export class GameService {
   fieldSize: FieldSize;
   difficultyLevel: DifficultyLevel;
-  startScreenViewed = false;
+
   ready = false;
   started = false;
   over = false;
+
   remainingMines: number;
 
   startDate: Date;
@@ -119,17 +120,14 @@ export class GameService {
     if (tile.flagged) { return; }
 
     if (tile.mined) {
-      this.mineTiles.map(t => this.uncoverMine(t));
+      // Lost
+      tile.clickedMine = true;
+      this.mineTiles.map(t => t.uncovered = true);
       this.stop();
       return;
     }
 
     this.checkAround(tile);
-  }
-
-  private uncoverMine(tile: Tile) {
-    tile.uncovered = true;
-    tile.text = '💣';
   }
 
   private checkAround(tile: Tile) {
@@ -162,6 +160,7 @@ export class GameService {
     }
 
     if (this.leftToUncover === 0) {
+      // Won
       this.mineTiles.map(t => t.flagged = true);
       this.remainingMines = 0;
       alert(`You won in ${this.secondsElapsed}!`);

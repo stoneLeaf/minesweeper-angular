@@ -26,6 +26,16 @@
   background-repeat: no-repeat;
 }
 
+.mined {
+  background-image: url(/assets/images/mine.svg);
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.clickedMine {
+  background-color: #FF0000;
+}
+
 .n1 {
   color: #0000FF;
 }
@@ -51,7 +61,7 @@
 }
 
 .n7 {
-  color: black;
+  color: #000000;
 }
 
 .n8 {

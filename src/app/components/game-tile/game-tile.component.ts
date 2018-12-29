@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 import { Tile } from '../../models/tile.model';
 import { GameService } from '../../services/game.service';
@@ -8,13 +8,10 @@ import { GameService } from '../../services/game.service';
   templateUrl: './game-tile.component.html',
   styleUrls: ['./game-tile.component.scss']
 })
-export class GameTileComponent implements OnInit {
+export class GameTileComponent {
   @Input() tile: Tile;
 
   constructor(private gameService: GameService) { }
-
-  ngOnInit() {
-  }
 
   onLeftClick() {
     this.gameService.uncover(this.tile);
