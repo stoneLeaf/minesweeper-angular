@@ -1,9 +1,9 @@
 <div class="bar">
   <div class="info">
-    <div class="counter">{{this.numberForDisplay(this.gameService.remainingMines, 3)}}</div>
+    <div class="counter">{{this.formatForDisplay(this.gameService.remainingMines, 3)}}</div>
   </div>
   <div class="smiley" (click)="newGame()"></div>
   <div class="info">
-    <div class="counter">{{this.numberForDisplay(this.gameService.secondsElapsed, 3)}}</div>
+    <div class="counter">{{this.formatForDisplay(this.gameService.secondsElapsed, 3)}}</div>
   </div>
 </div>
