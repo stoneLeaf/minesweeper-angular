@@ -13,13 +13,72 @@
 }
 
 .counter {
-  display: inline-block;
+  display: flex;
+  justify-content: center;
   border: 1px solid white;
   background-color: black;
-  color: red;
-  padding-left: 0.2em;
-  padding-right: 0.2em;
-  font-size: 1.5em;
+}
+
+.digit-common {
+  width: 0.95em;
+  height: 1.5em;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.digit-hyphen {
+  @extend .digit-common;
+  background-image: url(/assets/images/lcd_hyphen.svg);
+}
+
+.digit-0 {
+  @extend .digit-common;
+  background-image: url(/assets/images/lcd_0.svg);
+}
+
+.digit-1 {
+  @extend .digit-common;
+  background-image: url(/assets/images/lcd_1.svg);
+}
+
+.digit-2 {
+  @extend .digit-common;
+  background-image: url(/assets/images/lcd_2.svg);
+}
+
+.digit-3 {
+  @extend .digit-common;
+  background-image: url(/assets/images/lcd_3.svg);
+}
+
+.digit-4 {
+  @extend .digit-common;
+  background-image: url(/assets/images/lcd_4.svg);
+}
+
+.digit-5 {
+  @extend .digit-common;
+  background-image: url(/assets/images/lcd_5.svg);
+}
+
+.digit-6 {
+  @extend .digit-common;
+  background-image: url(/assets/images/lcd_6.svg);
+}
+
+.digit-7 {
+  @extend .digit-common;
+  background-image: url(/assets/images/lcd_7.svg);
+}
+
+.digit-8 {
+  @extend .digit-common;
+  background-image: url(/assets/images/lcd_8.svg);
+}
+
+.digit-9 {
+  @extend .digit-common;
+  background-image: url(/assets/images/lcd_9.svg);
 }
 
 .smiley {

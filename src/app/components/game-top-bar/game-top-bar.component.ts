@@ -15,6 +15,14 @@ export class GameTopBarComponent {
     this.gameService.newGame();
   }
 
+  minesDigits(): string[] {
+    return this.digitsArray(this.gameService.remainingMines, 3);
+  }
+
+  timerDigits(): string[] {
+    return this.digitsArray(this.gameService.secondsElapsed, 3);
+  }
+
   /**
    * Format number for displaying in the top bar counter & timer:
    * - cap value to max value for length
@@ -24,7 +32,7 @@ export class GameTopBarComponent {
    * @param value number to be formatted
    * @param length output length
    */
-  formatForDisplay(value: number, length: number): string {
+  private digitsArray(value: number, length: number): string[] {
     let prefix = '';
     if (value < 0) {
       length--;
@@ -39,6 +47,6 @@ export class GameTopBarComponent {
     while (output.length < length) {
       output = '0' + output;
     }
-    return prefix + output;
+    return (prefix + output).split('');
   }
 }
