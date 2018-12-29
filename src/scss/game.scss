@@ -1,6 +1,8 @@
 /* Game specific styles */
 
-$border-width: 0.2em;
+// Using em for borders produces some glitches in Chrome
+$border-width: 3px;
+
 $light-color: #FFFFFF;
 $shadow-color: #808080;
 $fill-color: #C0C0C0;

@@ -8,6 +8,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  // Not pretty, but didn't find a way to correct vertical align at this scale
+  padding-top: 0.15em;
   font-weight: 900;
   font-family: 'Courier New', Courier, monospace;
   user-select: none;
@@ -17,7 +19,7 @@
   border-top: 0.05em solid #808080;
   border-left: 0.05em solid #808080;
   border-bottom: 0;
-  border-right: 0; 
+  border-right: 0;
 }
 
 .flagged {
