@@ -1,5 +1,5 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnDestroy } from '@angular/core';
+import { Router, NavigationEnd } from '@angular/router';
 
 import { GameService } from '../../services/game.service';
 
@@ -8,16 +8,26 @@ import { GameService } from '../../services/game.service';
   templateUrl: './game.component.html',
   styleUrls: ['./game.component.scss']
 })
-export class GameComponent implements OnInit, OnDestroy {
+export class GameComponent implements OnDestroy {
+  routerEventsSubscription;
 
   constructor(private gameService: GameService,
-              private router: Router) { }
-
-  ngOnInit() {
-    this.gameService.newGame();
+              private router: Router) {
+    // This allows game reset when clicking on the nav bar 'New game' link
+    // while already being on the game route.
+    // Requires the onSameUrlNavigation: 'reload' option on the RouterModule.
+    this.routerEventsSubscription = this.router.events.subscribe(e => {
+      if (e instanceof NavigationEnd) {
+        this.newGame();
+      }
+    });
   }
 
-  ngOnDestroy(): void {
-    console.log('game component destroyed');
+  ngOnDestroy() {
+    this.routerEventsSubscription.unsubscribe();
+  }
+
+  newGame() {
+    this.gameService.newGame();
   }
 }

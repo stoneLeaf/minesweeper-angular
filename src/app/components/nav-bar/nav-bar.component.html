@@ -1,17 +1,17 @@
-<div class="nav-bar">
+<nav class="nav-bar">
   <div class="nav-title">
     <a routerLink="/"><img alt="Logo" src="/assets/images/logo.svg"></a>
     <a routerLink="/">minesweeper</a>
   </div>
   <div class="nav-items">
     <div class="nav-item">
-      <button class="button" (click)="newGame()">New game</button>
+      <a class="button" routerLink="/">New Game</a>
     </div>
     <div class="nav-item">
-      <button class="button" (click)="showOptions()">Options</button>
+      <a class="button" routerLink="/options">Options</a>
     </div>
     <div class="nav-item">
-      <button class="button" routerLink="/about">About</button>
+      <a class="button" routerLink="/about">About</a>
     </div>
   </div>
-</div>
+</nav>

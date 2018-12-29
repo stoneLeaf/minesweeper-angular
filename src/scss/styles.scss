@@ -15,7 +15,7 @@ a {
   }
 }
 
-/** Common button */
+/** Button */
 
 .button {
   position: relative;
@@ -30,14 +30,17 @@ a {
   text-transform: uppercase;
   font-size: 1.2em;
   white-space: nowrap;
+  text-decoration: none;
 }
 
 .button:hover {
   background-color: $primary-color-faded;
+  text-decoration: none;
 }
 
 .button:active {
   background-color: $dark-color;
+  text-decoration: none;
 }
 
 /** Dialog */
