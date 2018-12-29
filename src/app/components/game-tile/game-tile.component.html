@@ -1,5 +1,6 @@
 <div class="tile" (click)="onLeftClick()" (contextmenu)="onRightClick()"
                   [ngClass]="{'uncovered': tile.uncovered,
+                              'flagged': tile.flagged,
                               'n1': tile.text === '1',
                               'n2': tile.text === '2',
                               'n3': tile.text === '3',

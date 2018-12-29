@@ -20,6 +20,12 @@
   border-right: 0; 
 }
 
+.flagged {
+  background-image: url(/assets/images/flag.svg);
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
 .n1 {
   color: #0000FF;
 }

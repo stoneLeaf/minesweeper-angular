@@ -133,7 +133,7 @@ export class GameService {
   }
 
   private checkAround(tile: Tile) {
-    if (tile.uncovered) {
+    if (tile.uncovered || tile.flagged) {
       return;
     }
     tile.uncovered = true;
@@ -162,7 +162,7 @@ export class GameService {
     }
 
     if (this.leftToUncover === 0) {
-      this.mineTiles.map(t => this.flag(t));
+      this.mineTiles.map(t => t.flagged = true);
       this.remainingMines = 0;
       alert(`You won in ${this.secondsElapsed}!`);
       this.stop();
@@ -174,20 +174,10 @@ export class GameService {
     if (tile.uncovered) { return; }
     if (tile.flagged) {
       this.remainingMines++;
-      this.unflag(tile);
+      tile.flagged = false;
     } else {
       this.remainingMines--;
-      this.flag(tile);
+      tile.flagged = true;
     }
-  }
-
-  private flag(tile: Tile) {
-    tile.flagged = true;
-    tile.text = '⚑';
-  }
-
-  private unflag(tile: Tile) {
-    tile.flagged = false;
-    tile.text = '';
   }
 }
