@@ -156,7 +156,7 @@ export class GameService {
     if (number === 0) {
       aroundTiles.map(t => this.checkAround(t));
     } else {
-      tile.text = number.toString();
+      tile.number = number;
     }
 
     if (this.leftToUncover === 0) {

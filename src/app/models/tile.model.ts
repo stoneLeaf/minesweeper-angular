@@ -1,9 +1,9 @@
 export class Tile {
+  number = 0;
   flagged = false;
   uncovered = false;
   mined = false;
   clickedMine = false;
-  text = '';
 
   constructor(public xPos: number, public yPos: number) {}
 }
