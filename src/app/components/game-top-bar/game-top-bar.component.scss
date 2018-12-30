@@ -13,14 +13,10 @@
 }
 
 .counter {
+  @extend .debossed;
+  border-width: 1px;
   display: flex;
   justify-content: center;
-  border-width: 1px;
-  border-style: solid;
-  border-top-color: $shadow-color;
-  border-right-color: $light-color;
-  border-bottom-color: $light-color;
-  border-left-color: $shadow-color;
   background-color: black;
 }
 
