@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="128mm"
+   height="128mm"
+   viewBox="0 0 128 128"
+   version="1.1"
+   id="svg8"
+   sodipodi:docname="face_sunglasses.svg"
+   inkscape:version="0.92.3 (unknown)">
+  <title
+     id="title5106">Face Sunglasses</title>
+  <defs
+     id="defs2" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.7"
+     inkscape:cx="-38.552883"
+     inkscape:cy="132.60616"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1920"
+     inkscape:window-height="1031"
+     inkscape:window-x="0"
+     inkscape:window-y="25"
+     inkscape:window-maximized="1"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0" />
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title>Face Sunglasses</dc:title>
+        <cc:license
+           rdf:resource="http://creativecommons.org/licenses/by/4.0/" />
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>stoneLeaf</dc:title>
+          </cc:Agent>
+        </dc:creator>
+      </cc:Work>
+      <cc:License
+         rdf:about="http://creativecommons.org/licenses/by/4.0/">
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Reproduction" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Distribution" />
+        <cc:requires
+           rdf:resource="http://creativecommons.org/ns#Notice" />
+        <cc:requires
+           rdf:resource="http://creativecommons.org/ns#Attribution" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#DerivativeWorks" />
+      </cc:License>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="face"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-41.523811,-72.214286)">
+    <circle
+       style="fill:#ffff00;fill-opacity:0.96932511;stroke:#000000;stroke-width:5;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="path30"
+       cx="105.52381"
+       cy="136.21428"
+       r="60.476189"
+       inkscape:label="head" />
+    <path
+       style="fill:none;fill-opacity:0.96932511;stroke:#000000;stroke-width:4.78856945;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 140.69321,146.16505 A 36.32506,35.601272 0 0 1 105.52453,172.85496 36.32506,35.601272 0 0 1 70.354507,146.15987"
+       id="path72"
+       inkscape:connector-curvature="0"
+       inkscape:label="mouth" />
+    <g
+       id="g875"
+       style="display:inline"
+       inkscape:label="sunglasses"
+       transform="matrix(0.91095788,0,0,1,10.034546,-6.2811604)">
+      <g
+         id="g867"
+         inkscape:label="glasses">
+        <path
+           style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:5;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+           d="m 50.961311,113.29166 c -2.718284,37.77931 49.960409,33.83661 49.892859,-0.75595 -19.77982,-5.55704 -34.668905,-4.45983 -49.892859,0.75595 z"
+           id="path829"
+           inkscape:connector-curvature="0"
+           sodipodi:nodetypes="ccc"
+           inkscape:label="left" />
+        <path
+           style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:5;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+           d="m 158.68453,113.29166 c 2.71828,37.77931 -49.96041,33.83661 -49.89286,-0.75595 19.77982,-5.55704 34.6689,-4.45983 49.89286,0.75595 z"
+           id="path829-3"
+           inkscape:connector-curvature="0"
+           sodipodi:nodetypes="ccc"
+           inkscape:label="right" />
+      </g>
+      <path
+         inkscape:connector-curvature="0"
+         id="path869"
+         d="m 100.85417,112.53571 h 7.9375"
+         style="fill:#000000;fill-opacity:0.91411043;stroke:#000000;stroke-width:5;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         inkscape:label="bridge" />
+    </g>
+  </g>
+</svg>
