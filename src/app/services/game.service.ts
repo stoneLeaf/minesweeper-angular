@@ -32,7 +32,7 @@ export class GameService {
   constructor() {
     // Setting default values
     this.fieldSize = FieldSize.Medium;
-    this.difficultyLevel = DifficultyLevel.Beginner;
+    this.difficultyLevel = DifficultyLevel.Intermediate;
   }
 
   setFieldSize(fieldSize: FieldSize) {
