@@ -17,7 +17,9 @@
       </div>
     </div>
   </div>
-  <div class="smiley" (click)="newGame()"></div>
+  <div class="smiley-container">
+    <div class="smiley" (click)="newGame()"></div>
+  </div>
   <div class="info">
     <div class="counter">
       <div *ngFor="let digit of timerDigits()"

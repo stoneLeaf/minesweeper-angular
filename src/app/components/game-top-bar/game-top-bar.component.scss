@@ -15,7 +15,12 @@
 .counter {
   display: flex;
   justify-content: center;
-  border: 1px solid white;
+  border-width: 1px;
+  border-style: solid;
+  border-top-color: $shadow-color;
+  border-right-color: $light-color;
+  border-bottom-color: $light-color;
+  border-left-color: $shadow-color;
   background-color: black;
 }
 
@@ -81,16 +86,23 @@
   background-image: url(/assets/images/lcd_9.svg);
 }
 
-.smiley {
-  width: 2.5em;
-  height: 2.5em;
+.smiley-container {
+  width: 2em;
+  height: 2em;
   margin: 0.5em;
+  // display: inline-block;
+  border: 1px solid $shadow-color;
+}
+
+.smiley {
+  width: 100%;
+  height: 100%;
   cursor: pointer;
   background-image: url(/assets/images/face_happy.svg);
   background-size: contain;
   background-repeat: no-repeat;
-  padding: 0.2em;
   background-origin: content-box;
+  padding: 0.1em;
   box-sizing: border-box;
   @extend .embossed;
   &:active {
