@@ -3,8 +3,8 @@
  */
 export class DifficultyLevel {
   static Beginner = new DifficultyLevel('Beginner', 12);
-  static Intermediate = new DifficultyLevel('Intermediate', 15);
-  static Expert = new DifficultyLevel('Expert', 20);
+  static Intermediate = new DifficultyLevel('Intermediate', 15.5);
+  static Expert = new DifficultyLevel('Expert', 20.7);
 
   static getLevels(): DifficultyLevel[] {
     const levels = [];
