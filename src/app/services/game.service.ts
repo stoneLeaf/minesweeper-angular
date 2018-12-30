@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject, Subject } from 'rxjs';
 
 import { FieldSize } from '../models/field-size.model';
 import { DifficultyLevel } from '../models/difficulty-level.model';
@@ -20,6 +21,9 @@ export class GameService {
   startDate: Date;
   timerInterval;
   secondsElapsed = 0;
+
+  gameStatus$ = new BehaviorSubject<string>('running');
+  uncoverings$ = new Subject();
 
   private field: Tile[][] = [];
   private mineTiles: Tile[] = [];
@@ -89,6 +93,7 @@ export class GameService {
   }
 
   start(tile: Tile) {
+    this.gameStatus$.next('running');
     this.started = true;
     this.startDate = new Date();
     this.timerInterval = setInterval(() => {
@@ -106,6 +111,7 @@ export class GameService {
 
   newGame() {
     // TODO: if already new, do nothing
+    this.gameStatus$.next('running');
     this.stop();
     this.over = false;
     this.started = false;
@@ -114,13 +120,15 @@ export class GameService {
   }
 
   uncover(tile: Tile) {
-    if (!this.started) { this.start(tile); }
     if (this.over) { return; }
     if (tile.uncovered) { return; }
     if (tile.flagged) { return; }
+    this.uncoverings$.next();
+    if (!this.started) { this.start(tile); }
 
     if (tile.mined) {
       // Lost
+      this.gameStatus$.next('lost');
       tile.clickedMine = true;
       this.mineTiles.map(t => t.uncovered = true);
       this.stop();
@@ -161,6 +169,7 @@ export class GameService {
 
     if (this.leftToUncover === 0) {
       // Won
+      this.gameStatus$.next('won');
       this.mineTiles.map(t => t.flagged = true);
       this.remainingMines = 0;
       alert(`You won in ${this.secondsElapsed}!`);
