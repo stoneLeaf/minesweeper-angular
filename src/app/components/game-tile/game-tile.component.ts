@@ -14,11 +14,11 @@ export class GameTileComponent {
   constructor(private gameService: GameService) { }
 
   onLeftClick() {
-    this.gameService.uncover(this.tile);
+    this.gameService.getCurrentGame().uncover(this.tile);
   }
 
   onRightClick() {
-    this.gameService.toggle(this.tile);
+    this.gameService.getCurrentGame().toggle(this.tile);
     return false;
   }
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { GameService } from '../../services/game.service';
+import { Game } from 'src/app/models/game.model';
 
 @Component({
   selector: 'app-game-field',
@@ -17,11 +18,15 @@ export class GameFieldComponent implements OnInit {
     return Array.from(Array(length).keys());
   }
 
+  getGame(): Game {
+    return this.gameService.getCurrentGame();
+  }
+
   heightArray(): number[] {
-    return this.coordinatesArray(this.gameService.fieldSize.getHeight());
+    return this.coordinatesArray(this.getGame().getHeight());
   }
 
   widthArray(): number[] {
-    return this.coordinatesArray(this.gameService.fieldSize.getWidth());
+    return this.coordinatesArray(this.getGame().getWidth());
   }
 }

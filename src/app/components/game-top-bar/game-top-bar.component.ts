@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 
 import { GameService } from '../../services/game.service';
 
-
 @Component({
   selector: 'app-game-top-bar',
   templateUrl: './game-top-bar.component.html',
@@ -15,10 +14,14 @@ export class GameTopBarComponent implements OnInit {
   constructor(private gameService: GameService) { }
 
   ngOnInit() {
-    this.gameService.gameStatus$.subscribe((status) => {
+    this.subscribeToCurrentGame();
+  }
+
+  subscribeToCurrentGame() {
+    this.gameService.getCurrentGame().gameStatus$.subscribe((status) => {
       this.gameStatus = status;
     });
-    this.gameService.uncoverings$.subscribe(() => {
+    this.gameService.getCurrentGame().uncoverings$.subscribe(() => {
       if (!this.uncovering) {
         this.uncovering = true;
         setInterval(() => {
@@ -30,14 +33,15 @@ export class GameTopBarComponent implements OnInit {
 
   newGame() {
     this.gameService.newGame();
+    this.subscribeToCurrentGame();
   }
 
   minesDigits(): string[] {
-    return this.digitsArray(this.gameService.remainingMines, 3);
+    return this.digitsArray(this.gameService.getCurrentGame().remainingMines, 3);
   }
 
   timerDigits(): string[] {
-    return this.digitsArray(this.gameService.secondsElapsed, 3);
+    return this.digitsArray(this.gameService.getCurrentGame().secondsElapsed, 3);
   }
 
   /**

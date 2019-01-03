@@ -18,16 +18,12 @@ export class GameComponent implements OnDestroy {
     // Requires the onSameUrlNavigation: 'reload' option on the RouterModule.
     this.routerEventsSubscription = this.router.events.subscribe(e => {
       if (e instanceof NavigationEnd) {
-        this.newGame();
+        this.gameService.newGame();
       }
     });
   }
 
   ngOnDestroy() {
     this.routerEventsSubscription.unsubscribe();
-  }
-
-  newGame() {
-    this.gameService.newGame();
   }
 }
