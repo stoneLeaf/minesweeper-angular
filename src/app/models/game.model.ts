@@ -10,7 +10,6 @@ export class Game {
   private mineTiles: Tile[] = [];
   private leftToUncover: number;
 
-  ready = false;
   started = false;
   over = false;
 
@@ -46,13 +45,12 @@ export class Game {
     for (let y = 0; y < this.getHeight(); y++) {
       this.field[y] = [];
       for (let x = 0; x < this.getWidth(); x++) {
-        this.field[y][x] = new Tile(x, y);
+        this.field[y][x] = new Tile(this, x, y);
       }
     }
     const totalTiles = this.getHeight() * this.getWidth();
     this.remainingMines = this.totalMines;
     this.leftToUncover = totalTiles - this.remainingMines;
-    this.ready = true;
   }
 
   placeMinesAwayFrom(tile: Tile) {
@@ -90,7 +88,6 @@ export class Game {
   }
 
   start(tile: Tile) {
-    this.gameStatus$.next('running');
     this.started = true;
     this.startDate = new Date();
     this.timerInterval = setInterval(() => {

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { GameService } from '../../services/game.service';
+import { Game } from 'src/app/models/game.model';
 
 @Component({
   selector: 'app-game-top-bar',
@@ -8,44 +9,44 @@ import { GameService } from '../../services/game.service';
   styleUrls: ['./game-top-bar.component.scss']
 })
 export class GameTopBarComponent implements OnInit {
+  currentGame: Game;
+
   gameStatus: string;
   uncovering = false;
 
   constructor(private gameService: GameService) { }
 
   ngOnInit() {
-    this.subscribeToCurrentGame();
-  }
-
-  subscribeToCurrentGame() {
-    this.gameService.getCurrentGame().gameStatus$.subscribe((status) => {
-      this.gameStatus = status;
-    });
-    this.gameService.getCurrentGame().uncoverings$.subscribe(() => {
-      if (!this.uncovering) {
-        this.uncovering = true;
-        setInterval(() => {
-          this.uncovering = false;
-        }, 250);
-      }
+    this.gameService.currentGame().subscribe(game => {
+      this.currentGame = game;
+      game.gameStatus$.subscribe((status) => {
+        this.gameStatus = status;
+      });
+      game.uncoverings$.subscribe(() => {
+        if (!this.uncovering) {
+          this.uncovering = true;
+          setInterval(() => {
+            this.uncovering = false;
+          }, 250);
+        }
+      });
     });
   }
 
   newGame() {
     this.gameService.newGame();
-    this.subscribeToCurrentGame();
   }
 
   minesDigits(): string[] {
-    return this.digitsArray(this.gameService.getCurrentGame().remainingMines, 3);
+    return this.digitsArray(this.currentGame.remainingMines, 3);
   }
 
   timerDigits(): string[] {
-    return this.digitsArray(this.gameService.getCurrentGame().secondsElapsed, 3);
+    return this.digitsArray(this.currentGame.secondsElapsed, 3);
   }
 
   /**
-   * Format number for displaying in the top bar counter & timer:
+   * Format number as array for top bar counter & timer:
    * - cap value to max value for length
    * - add leading zeroes
    * - put the minus sign in front

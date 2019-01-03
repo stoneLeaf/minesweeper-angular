@@ -1,7 +1,6 @@
 import { Component, Input } from '@angular/core';
 
 import { Tile } from '../../models/tile.model';
-import { GameService } from '../../services/game.service';
 
 @Component({
   selector: 'app-game-tile',
@@ -11,14 +10,14 @@ import { GameService } from '../../services/game.service';
 export class GameTileComponent {
   @Input() tile: Tile;
 
-  constructor(private gameService: GameService) { }
+  constructor() { }
 
   onLeftClick() {
-    this.gameService.getCurrentGame().uncover(this.tile);
+    this.tile.parentGame.uncover(this.tile);
   }
 
   onRightClick() {
-    this.gameService.getCurrentGame().toggle(this.tile);
+    this.tile.parentGame.toggle(this.tile);
     return false;
   }
 }

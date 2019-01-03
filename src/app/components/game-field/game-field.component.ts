@@ -9,24 +9,23 @@ import { Game } from 'src/app/models/game.model';
   styleUrls: ['./game-field.component.scss']
 })
 export class GameFieldComponent implements OnInit {
+  currentGame: Game;
 
   constructor(private gameService: GameService) { }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.gameService.currentGame().subscribe(game => this.currentGame = game);
+  }
 
   private coordinatesArray(length: number): number[] {
     return Array.from(Array(length).keys());
   }
 
-  getGame(): Game {
-    return this.gameService.getCurrentGame();
-  }
-
   heightArray(): number[] {
-    return this.coordinatesArray(this.getGame().getHeight());
+    return this.coordinatesArray(this.currentGame.getHeight());
   }
 
   widthArray(): number[] {
-    return this.coordinatesArray(this.getGame().getWidth());
+    return this.coordinatesArray(this.currentGame.getWidth());
   }
 }

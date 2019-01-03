@@ -1,3 +1,8 @@
+import { Game } from './game.model';
+
+/**
+ * Class representing a game tile.
+ */
 export class Tile {
   number = 0;
   flagged = false;
@@ -5,5 +10,5 @@ export class Tile {
   mined = false;
   clickedMine = false;
 
-  constructor(public xPos: number, public yPos: number) {}
+  constructor(public parentGame: Game, public xPos: number, public yPos: number) {}
 }
