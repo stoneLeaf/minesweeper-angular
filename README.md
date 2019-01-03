@@ -1,6 +1,8 @@
 # minesweeper-angular
 
-A [Minesweeper](https://en.wikipedia.org/wiki/Minesweeper_(video_game)) game made with [Angular](https://angular.io/).
+A [Minesweeper](https://en.wikipedia.org/wiki/Minesweeper_(video_game)) game built with [Angular](https://angular.io/). The look and feel is a tribute to the original Minesweeper for Windows.
+
+![Screenshot](screenshot.png)
 
 ## Setup
 
@@ -12,4 +14,6 @@ This project requires [Node.js](https://nodejs.org/), [npm](https://www.npmjs.co
 
 ## License
 
-This project is under the [MIT license](LICENSE).
+This project codebase is under the [MIT license](LICENSE).
+The logo is based on the [official Angular logo](https://angular.io/presskit) which is under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+All other graphics are by me and also under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
