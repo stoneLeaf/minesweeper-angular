@@ -83,6 +83,11 @@
  */
 import 'zone.js/dist/zone';  // Included with Angular CLI.
 
+/**
+ * Import needed by StackBlitz.io
+ * See https://github.com/stackblitz/core/issues/758
+ */
+import 'core-js/es7/reflect';
 
 /***************************************************************************************************
  * APPLICATION IMPORTS

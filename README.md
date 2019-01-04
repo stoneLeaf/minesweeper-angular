@@ -2,7 +2,9 @@
 
 A [Minesweeper](https://en.wikipedia.org/wiki/Minesweeper_(video_game)) game built with [Angular](https://angular.io/). The look and feel is a tribute to the original Minesweeper for Windows.
 
-![Screenshot](screenshot.png)
+**[Live demo on StackBlitz](https://stackblitz.com/edit/minesweeper-angular)**
+
+[![Screenshot](screenshot.png)](https://stackblitz.com/edit/minesweeper-angular)
 
 ## Setup
 
