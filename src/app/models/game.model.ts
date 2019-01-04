@@ -6,58 +6,66 @@ import { Tile } from './tile.model';
  * Class representing a game.
  */
 export class Game {
-  private field: Tile[][] = [];
-  private mineTiles: Tile[] = [];
+  private field: Tile[][];
+  private mineTiles: Tile[];
   private leftToUncover: number;
 
-  started = false;
-  over = false;
+  private startDate: Date;
+  private timerInterval;
 
-  remainingMines: number;
+  gameStatus$: BehaviorSubject<string>;
+  uncoverings$: Subject<any>;
 
-  startDate: Date;
-  timerInterval;
-  secondsElapsed = 0;
+  remainingMines$: BehaviorSubject<number>;
+  secondsElapsed$: BehaviorSubject<number>;
 
-  gameStatus$ = new BehaviorSubject<string>('running');
-  uncoverings$ = new Subject();
-
-  constructor(private height: number,
-              private width: number,
-              private totalMines: number) {
+  constructor(private _height: number,
+              private _width: number,
+              private _totalMines: number) {
     this.generateField();
+
+    this.gameStatus$ = new BehaviorSubject<string>('ready');
+    this.uncoverings$ = new Subject();
+
+    this.remainingMines$ = new BehaviorSubject<number>(this._totalMines);
+    this.secondsElapsed$ = new BehaviorSubject<number>(0);
+
+    const totalTiles = this.height * this.width;
+    this.leftToUncover = totalTiles - this._totalMines;
   }
 
-  getHeight(): number {
-    return this.height;
-  }
-
-  getWidth(): number {
-    return this.width;
-  }
-
-  getTotalMines(): number {
-    return this.totalMines;
-  }
-
-  generateField() {
-    // Generating tiles
-    for (let y = 0; y < this.getHeight(); y++) {
+  private generateField() {
+    this.field = [];
+    for (let y = 0; y < this.height; y++) {
       this.field[y] = [];
-      for (let x = 0; x < this.getWidth(); x++) {
+      for (let x = 0; x < this.width; x++) {
         this.field[y][x] = new Tile(this, x, y);
       }
     }
-    const totalTiles = this.getHeight() * this.getWidth();
-    this.remainingMines = this.totalMines;
-    this.leftToUncover = totalTiles - this.remainingMines;
+  }
+
+  get height(): number {
+    return this._height;
+  }
+
+  get width(): number {
+    return this._width;
+  }
+
+  get totalMines(): number {
+    return this._totalMines;
+  }
+
+  getTile(xPos: number, yPos: number): Tile {
+    return this.field[yPos][xPos];
   }
 
   placeMinesAwayFrom(tile: Tile) {
-    let minePlacings = this.remainingMines;
+    this.mineTiles = [];
+    let minePlacings = this.totalMines;
     for (let i = 0; i < minePlacings; i++) {
-      const xRand = this.randomInt(this.getWidth() - 1);
-      const yRand = this.randomInt(this.getHeight() - 1);
+      const xRand = this.randomInt(this.width - 1);
+      const yRand = this.randomInt(this.height - 1);
       const randTile = this.getTile(xRand, yRand);
       if (randTile.mined || this.areNear(randTile, tile)) {
         // Adding a new try
@@ -83,40 +91,36 @@ export class Game {
     return false;
   }
 
-  getTile(xPos: number, yPos: number): Tile {
-    return this.field[yPos][xPos];
-  }
-
   start(tile: Tile) {
-    this.started = true;
+    this.gameStatus$.next('running');
     this.startDate = new Date();
     this.timerInterval = setInterval(() => {
       const delta = Math.floor(
                     ((new Date()).getTime() - this.startDate.getTime()) / 1000);
-      this.secondsElapsed = delta;
+      this.secondsElapsed$.next(delta);
     }, 1000);
     this.placeMinesAwayFrom(tile);
   }
 
-  stop() {
-    this.over = true;
+  stopTimer() {
     clearInterval(this.timerInterval);
   }
 
-
   uncover(tile: Tile) {
-    if (this.over) { return; }
+    if (this.gameStatus$.value === 'ready') { this.start(tile); }
+
+    if (this.gameStatus$.value !== 'running') { return; }
     if (tile.uncovered) { return; }
     if (tile.flagged) { return; }
+
     this.uncoverings$.next();
-    if (!this.started) { this.start(tile); }
 
     if (tile.mined) {
       // Lost
       this.gameStatus$.next('lost');
       tile.clickedMine = true;
       this.mineTiles.map(t => t.uncovered = true);
-      this.stop();
+      this.stopTimer();
       return;
     }
 
@@ -135,9 +139,9 @@ export class Game {
       for (let dY = -1; dY < 2; dY++) {
         if (dX === 0 && dY === 0) { continue; }
         const x = tile.xPos + dX;
-        if (x < 0 || x >= this.getWidth()) { continue; }
+        if (x < 0 || x >= this.width) { continue; }
         const y = tile.yPos + dY;
-        if (y < 0 || y >= this.getHeight()) { continue; }
+        if (y < 0 || y >= this.height) { continue; }
         const currentTile = this.getTile(x, y);
         if (currentTile.mined) {
           number++;
@@ -156,20 +160,20 @@ export class Game {
       // Won
       this.gameStatus$.next('won');
       this.mineTiles.map(t => t.flagged = true);
-      this.remainingMines = 0;
-      alert(`You won in ${this.secondsElapsed}!`);
-      this.stop();
+      this.remainingMines$.next(0);
+      this.stopTimer();
     }
   }
 
   toggle(tile: Tile) {
-    if (this.over) { return; }
+    if (this.gameStatus$.value !== 'running') { return; }
     if (tile.uncovered) { return; }
+
     if (tile.flagged) {
-      this.remainingMines++;
+      this.remainingMines$.next(this.remainingMines$.value + 1);
       tile.flagged = false;
     } else {
-      this.remainingMines--;
+      this.remainingMines$.next(this.remainingMines$.value - 1);
       tile.flagged = true;
     }
   }

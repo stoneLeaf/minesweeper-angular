@@ -22,10 +22,10 @@ export class GameFieldComponent implements OnInit {
   }
 
   heightArray(): number[] {
-    return this.coordinatesArray(this.currentGame.getHeight());
+    return this.coordinatesArray(this.currentGame.height);
   }
 
   widthArray(): number[] {
-    return this.coordinatesArray(this.currentGame.getWidth());
+    return this.coordinatesArray(this.currentGame.width);
   }
 }

@@ -1,16 +1,18 @@
 <div class="bar">
   <div class="info">
-    <app-game-counter [value]="this.currentGame.remainingMines" [displayLength]="3"></app-game-counter>
+    <app-game-counter [value]="this.currentGame.remainingMines$ | async"
+                      [displayLength]="3"></app-game-counter>
   </div>
   <div class="smiley-container">
     <div class="smiley" (click)="newGame()"
-                        [ngClass]="{'face-surprise': uncovering === true,
-                                    'face-happy': gameStatus === 'running',
-                                    'face-over': gameStatus === 'lost',
-                                    'face-sunglasses': gameStatus === 'won'}">
+         [ngClass]="{'face-surprise': uncovering === true,
+                     'face-happy': gameStatus === 'ready' || gameStatus === 'running',
+                     'face-over': gameStatus === 'lost',
+                     'face-sunglasses': gameStatus === 'won'}">
     </div>
   </div>
   <div class="info">
-    <app-game-counter [value]="this.currentGame.secondsElapsed" [displayLength]="3"></app-game-counter>
+    <app-game-counter [value]="this.currentGame.secondsElapsed$ | async"
+                      [displayLength]="3"></app-game-counter>
   </div>
 </div>
