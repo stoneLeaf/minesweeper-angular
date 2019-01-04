@@ -12,13 +12,13 @@ export class GameService {
   private fieldSize: FieldSize;
   private difficultyLevel: DifficultyLevel;
 
-  private currentGame$: BehaviorSubject<Game>;
+  private _currentGame$: BehaviorSubject<Game>;
 
   constructor() {
     // Setting default values
     this.fieldSize = FieldSize.Medium;
     this.difficultyLevel = DifficultyLevel.Intermediate;
-    this.currentGame$ = new BehaviorSubject<Game>(this.createNewGame());
+    this._currentGame$ = new BehaviorSubject<Game>(this.createNewGame());
   }
 
   private createNewGame(): Game {
@@ -30,11 +30,11 @@ export class GameService {
   }
 
   newGame() {
-    this.currentGame$.next(this.createNewGame());
+    this._currentGame$.next(this.createNewGame());
   }
 
-  currentGame(): Observable<Game> {
-    return this.currentGame$.asObservable();
+  get currentGame$(): Observable<Game> {
+    return this._currentGame$.asObservable();
   }
 
   setFieldSize(fieldSize: FieldSize) {

@@ -10,8 +10,6 @@ import { Tile } from '../../models/tile.model';
 export class GameTileComponent {
   @Input() tile: Tile;
 
-  constructor() { }
-
   onLeftClick() {
     this.tile.parentGame.uncover(this.tile);
   }

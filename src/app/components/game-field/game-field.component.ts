@@ -14,7 +14,7 @@ export class GameFieldComponent implements OnInit {
   constructor(private gameService: GameService) { }
 
   ngOnInit() {
-    this.gameService.currentGame().subscribe(game => this.currentGame = game);
+    this.gameService.currentGame$.subscribe(game => this.currentGame = game);
   }
 
   private coordinatesArray(length: number): number[] {

@@ -17,7 +17,7 @@ export class GameTopBarComponent implements OnInit {
   constructor(private gameService: GameService) { }
 
   ngOnInit() {
-    this.gameService.currentGame().subscribe(game => {
+    this.gameService.currentGame$.subscribe(game => {
       this.currentGame = game;
       game.gameStatus$.subscribe((status) => {
         this.gameStatus = status;

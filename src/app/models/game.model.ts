@@ -27,11 +27,11 @@ export class Game {
     this.gameStatus$ = new BehaviorSubject<string>('ready');
     this.uncoverings$ = new Subject();
 
-    this.remainingMines$ = new BehaviorSubject<number>(this._totalMines);
+    this.remainingMines$ = new BehaviorSubject<number>(this.totalMines);
     this.secondsElapsed$ = new BehaviorSubject<number>(0);
 
     const totalTiles = this.height * this.width;
-    this.leftToUncover = totalTiles - this._totalMines;
+    this.leftToUncover = totalTiles - this.totalMines;
   }
 
   private generateField() {
