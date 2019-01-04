@@ -1,21 +1,6 @@
 <div class="bar">
   <div class="info">
-    <div class="counter">
-      <div *ngFor="let digit of minesDigits()"
-           [ngClass]="{'digit-hyphen': digit === '-',
-                       'digit-0': digit === '0',
-                       'digit-1': digit === '1',
-                       'digit-2': digit === '2',
-                       'digit-3': digit === '3',
-                       'digit-4': digit === '4',
-                       'digit-5': digit === '5',
-                       'digit-6': digit === '6',
-                       'digit-7': digit === '7',
-                       'digit-8': digit === '8',
-                       'digit-9': digit === '9'}">
-
-      </div>
-    </div>
+    <app-game-counter [value]="this.currentGame.remainingMines" [displayLength]="3"></app-game-counter>
   </div>
   <div class="smiley-container">
     <div class="smiley" (click)="newGame()"
@@ -26,21 +11,6 @@
     </div>
   </div>
   <div class="info">
-    <div class="counter">
-      <div *ngFor="let digit of timerDigits()"
-            [ngClass]="{'digit-hyphen': digit === '-',
-                        'digit-0': digit === '0',
-                        'digit-1': digit === '1',
-                        'digit-2': digit === '2',
-                        'digit-3': digit === '3',
-                        'digit-4': digit === '4',
-                        'digit-5': digit === '5',
-                        'digit-6': digit === '6',
-                        'digit-7': digit === '7',
-                        'digit-8': digit === '8',
-                        'digit-9': digit === '9'}">
-
-      </div>
-    </div>
+    <app-game-counter [value]="this.currentGame.secondsElapsed" [displayLength]="3"></app-game-counter>
   </div>
 </div>

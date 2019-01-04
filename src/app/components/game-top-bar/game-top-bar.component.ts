@@ -36,39 +36,4 @@ export class GameTopBarComponent implements OnInit {
   newGame() {
     this.gameService.newGame();
   }
-
-  minesDigits(): string[] {
-    return this.digitsArray(this.currentGame.remainingMines, 3);
-  }
-
-  timerDigits(): string[] {
-    return this.digitsArray(this.currentGame.secondsElapsed, 3);
-  }
-
-  /**
-   * Format number as array for top bar counter & timer:
-   * - cap value to max value for length
-   * - add leading zeroes
-   * - put the minus sign in front
-   *
-   * @param value number to be formatted
-   * @param length output length
-   */
-  private digitsArray(value: number, length: number): string[] {
-    let prefix = '';
-    if (value < 0) {
-      length--;
-      prefix = '-';
-      value = Math.abs(value);
-    }
-    const max = Math.pow(10, length) - 1;
-    if (value > max) {
-      value = max;
-    }
-    let output = '' + value;
-    while (output.length < length) {
-      output = '0' + output;
-    }
-    return (prefix + output).split('');
-  }
 }
