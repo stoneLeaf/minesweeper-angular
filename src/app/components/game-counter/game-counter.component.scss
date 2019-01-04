@@ -15,6 +15,22 @@
   background-repeat: no-repeat;
 }
 
+/* Pre-loading images */
+.counter:after {
+  content: url(/assets/images/lcd_hyphen.svg)
+           url(/assets/images/lcd_0.svg)
+           url(/assets/images/lcd_1.svg)
+           url(/assets/images/lcd_2.svg)
+           url(/assets/images/lcd_3.svg)
+           url(/assets/images/lcd_4.svg)
+           url(/assets/images/lcd_5.svg)
+           url(/assets/images/lcd_6.svg)
+           url(/assets/images/lcd_7.svg)
+           url(/assets/images/lcd_8.svg)
+           url(/assets/images/lcd_9.svg);
+  display: none;
+}
+
 .digit-hyphen {
   @extend .digit-common;
   background-image: url(/assets/images/lcd_hyphen.svg);

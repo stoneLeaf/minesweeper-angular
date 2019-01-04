@@ -34,6 +34,15 @@
   }
 }
 
+/* Pre-loading images */
+.smiley:after {
+  content: url(/assets/images/face_happy.svg)
+           url(/assets/images/face_surprise.svg)
+           url(/assets/images/face_over.svg)
+           url(/assets/images/face_sunglasses.svg);
+  display: none;
+}
+
 .face-happy {
   background-image: url(/assets/images/face_happy.svg);
 }

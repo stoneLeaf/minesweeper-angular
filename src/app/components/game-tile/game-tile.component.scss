@@ -15,6 +15,13 @@
   user-select: none;
 }
 
+/* Pre-loading images */
+.tile:after {
+  content: url(/assets/images/flag.svg)
+           url(/assets/images/mine.svg);
+  display: none;
+}
+
 .uncovered {
   border-top: 0.05em solid #808080;
   border-left: 0.05em solid #808080;
