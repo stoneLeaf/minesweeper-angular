@@ -1,5 +1,7 @@
 # minesweeper-angular
 
+![Version](https://img.shields.io/badge/version-0.2.1-blue.svg) [![License](https://img.shields.io/github/license/stoneLeaf/minesweeper-angular.svg)](LICENSE)
+
 A [Minesweeper](https://en.wikipedia.org/wiki/Minesweeper_(video_game)) game built with [Angular](https://angular.io/). The look and feel is a tribute to the original Minesweeper for Windows.
 
 **[Live demo on StackBlitz](https://stackblitz.com/edit/minesweeper-angular)**
