@@ -4,7 +4,9 @@ A [Minesweeper](https://en.wikipedia.org/wiki/Minesweeper_(video_game)) game bui
 
 **[Live demo on StackBlitz](https://stackblitz.com/edit/minesweeper-angular)**
 
-[![Screenshot](screenshot.png)](https://stackblitz.com/edit/minesweeper-angular)
+## Preview
+
+[![Screencast](screencast.gif)](#preview)
 
 ## Setup
 
