@@ -16,16 +16,4 @@ export class GameFieldComponent implements OnInit {
   ngOnInit() {
     this.gameService.currentGame$.subscribe(game => this.currentGame = game);
   }
-
-  private coordinatesArray(length: number): number[] {
-    return Array.from(Array(length).keys());
-  }
-
-  heightArray(): number[] {
-    return this.coordinatesArray(this.currentGame.height);
-  }
-
-  widthArray(): number[] {
-    return this.coordinatesArray(this.currentGame.width);
-  }
 }

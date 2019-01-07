@@ -6,9 +6,9 @@ import { Tile } from './tile.model';
  * Class representing a game.
  */
 export class Game {
-  private field: Tile[][];
   private mineTiles: Tile[];
   private leftToUncover: number;
+  field: Tile[][];
 
   private startDate: Date;
   private timerInterval;
