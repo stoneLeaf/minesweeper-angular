@@ -32,3 +32,7 @@
 .nav-item {
   margin-left: 1em;
 }
+
+.active {
+  background-color: darken($primary-color, $amount: 20%);
+}
