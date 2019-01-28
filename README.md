@@ -20,6 +20,6 @@ This project requires [Node.js](https://nodejs.org/), [npm](https://www.npmjs.co
 
 ## License
 
-This project codebase is under the [MIT license](LICENSE).
 The logo is based on the [official Angular logo](https://angular.io/presskit) which is under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
-All other graphics are by me and also under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+
+This project's codebase is under the [MIT license](LICENSE) and its graphics under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
